@@ -1,2 +1,47 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
-%} {% endblock %}
+
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+{% block content%}
+
+<style>
+  body {
+  background: #f9a743;
+  .head5{
+      color:green;
+      }
+  }
+</style>
+<h1 align="center"> Fill out the form </h1>
+<form method='POST'>
+    <h4 align="center"> How many cups of water did you drink today? answer in numeric </h4>
+    <textarea name ="text" id ="text" class ="form-control"></textarea>
+    <br />
+
+    <h4 align="center"> what's the intensity of your workout?
+      (high intensity:1, moderate :2, low:3) answer in numeric </h4>
+    <textarea name ="text1" id ="text1" class ="form-control"></textarea>
+    <br />
+
+    <h4 align="center"> How sore are you today? answer in numeric </h4>
+    <textarea name ="text2" id ="text2" class ="form-control"></textarea>
+    <br />
+
+    <h4 align="center"> How many hours did you workout today? answer in numeric </h4>
+    <textarea name ="text3" id ="text3" class ="form-control"></textarea>
+    <br />
+
+    <h4 align="center"> How many hours of sleep did you get today? answer in numeric </h4>
+    <textarea name ="text4" id ="text4" class ="form-control"></textarea>
+    <br />
+
+    <h4 align="center"> On a scale of 1-10 how's your mental health ? answer in numeric </h4>
+    <textarea name ="text5" id ="text5" class ="form-control"></textarea>
+    <div align = "center">
+      <button type = "submit" class="btn btn-lg btn-primary">SUBMIT</button>
+    </div>
+    <br />
+    <div align = "center">
+        <a href="/home"><button type = "button" class="btn btn-lg btn-secondary">Back</button></a>
+    </div>
+
+</form>
+    <{% endblock %}
