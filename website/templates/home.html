@@ -1,30 +1,424 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %}
 {% block content%}
-<h1 align="center">Posts</h1>
-<div id="posts">
-    {% for post in posts %}
-    <div class="card border-dark">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <a href="/posts/{{post.user.username}}">{{post.user.username}}</a>
+
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SIP</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Importing fonts -->
+    <!-- Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400i|Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
+
+    <!-- Importing CSSs -->
+    <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body id="body">
+
+
+
+
+  <!-- Main body -->
+
+
+    <!-- Main body -->
+
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center mb-5 mb-md-0">
+                  <!--this is where the sip logo should be inserted -->
+                    <img src="images/logo.svg" alt="Logo" style="max-width: 1000%;">
+                </div>
+                <div class="col-md-6 align-self-center text-center text-md-left">
+                    <div class="block">
+                        <h1 class="font-weight-bold mb-4 font-size-60">Injury prevention starts here with SIP</h1>
+                        <p class="mb-4">If you are struggling with a sports related injury, a SIP membership is what you need to get back on the right track. Were here to help prevent injury by making a personal plan for you! Any person, or any level of athlete can use this app to help them make a plan to stay on track and reduce over exercising, unbalanced exercise and unhealthy practices. It's made by athletes that are sick of being injured. </p>
+                        <a class="btn btn-main" href="#about" role="button">Join The SIP Team Today!</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <div class="card-text">{{post.text}}</div>
-            <div class="card-text">{{post.text1}}</div>
-            <div class="card-text">{{post.text2}}</div>
-            <div class="card-text">{{post.text3}}</div>
-            <div class="card-text">{{post.text4}}</div>
-            <div class="card-text">{{post.text5}}</div>
+    </section>
+
+
+    <!-- This is the app features area, the giant links are to pictures if anyone has a better picture -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="heading">
+                        <h2>Our Core Features</h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-40 text-center text-md-left">
+                        <i class="d-inlin-block h2 mb-10 tf-ion-ios-alarm-outline"></i>
+                        <h4 class="font-weight-bold mb-2">Easy To Use</h4>
+                        <p>Our state of the art application is very user friendly. All we ask is a few simple questions before giving you what you need to succeed.</p>
+                    </div>
+                    <div class="mb-40 text-center text-md-left">
+                        <i class="d-inlin-block h2 mb-10 tf-ion-ios-bell-outline"></i>
+                        <h4 class="font-weight-bold mb-2">Modern</h4>
+                        <p>We gurantee the most up to date injury recovery prevention available.</p>
+                    </div>
+                    <div class="mb-40 text-center text-md-left">
+                        <i class="d-inlin-block h2 mb-10 tf-ion-ios-cart-outline"></i>
+                        <h4 class="font-weight-bold mb-2">Flexible</h4>
+                        <p>When it comes to injury prvention everyone is different, that is why all members get their own unique program.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center align-self-center mb-4 mb-md-0">
+                    <img class="img-fluid" src="data:image/png;base64,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" alt="person">
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-40 text-center text-md-left">
+                        <i class="d-inlin-block h2 mb-10 tf-ion-ios-alarm-outline"></i>
+                        <h4 class="font-weight-bold mb-2">Personal</h4>
+                        <p>Our programs will change based on the answers you give from day to day.</p>
+                    </div>
+                    <div class="mb-40 text-center text-md-left">
+                        <i class="d-inlin-block h2 mb-10 tf-ion-ios-bell-outline"></i>
+                        <h4 class="font-weight-bold mb-2">Innovative</h4>
+                        <p>The SIP development team is always working to give our members the best results possible.</p>
+                    </div>
+                    <div class="mb-40 text-center text-md-left">
+                        <i class="d-inlin-block h2 mb-10 tf-ion-ios-cart-outline"></i>
+                        <h4 class="font-weight-bold mb-2">Customizable</h4>
+                        <p>Based on results and how your body is responding to training SIP will adjust to your needs.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-footer text-muted">
-            {{post.date_created}}
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center mb-5 mb-lg-0">
+                    <img class="img-fluid" src="https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325866/a-soccer-player-suffering-from-an-acl-injury.jpg" alt="baseball">
+                </div>
+                <div class="col-md-6 align-self-center text-center text-md-left">
+                    <div class="content">
+                        <h2 class="subheading font-weight-bold mb-10">Mission Statement</h2>
+                        <p>Our goal here at sip is to provide fellow athletes a better chance to reach their full potential. Nobody wants to be sidelined with an injury and nobody ever believes it will happen to them. The truth is athletes aren't invincible, but there are many injuries that can be avoided, and our team here at SIP is going to do exactly that for you.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    {% endfor %}
-    <div align="center">
-        <a href="/create-post">
-            <button type="button" class="btn btn-primary btn-lg">
-                Fill out Form
-            </button></a>
-    </div>
-</div>
+    </section>
+
+
+    <section class="feature-list section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading">
+                        <h2>Why choose our product?</h2>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row mb-40">
+                <div class="col-md-6 text-center mb-5 mb-lg-0">
+                    <img class="img-fluid" src="images/choose.jpg" alt="">
+                </div>
+                <div class="col-md-6 align-self-center text-center text-md-left">
+                    <div class="content">
+                        <h4 class="subheading">WE HEAR YOU!</h4>
+                        <p>We stand-out for our quality, safety, just in-time services.We make sure to deilver your concerns to the correspondance just in time. We give our priority to athletes and making athletes lifes easier. Please, check out what our athletes have to say. </p>
+                        <a href="" class="btn btn-main btn-main-sm">Check Features</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 order-md-1 order-2 align-self-center text-center text-md-left">
+                    <div class="content">
+
+
+                    </div>
+                </div>
+                <div class="col-md-6 order-md-2 order-1 text-center mb-5 mb-lg-0">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- These are the pictures of sean we should probably change that  -->
+    <section id="service" class="gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading">
+                        <h2>Check out our Athletes..</h2>
+                    </div>
+
+                    <div class="gallery-slider">
+                       <div class="block">
+                            <div class="gallery-overlay">
+                                <a href="images/kelsie.jpg"
+                                  class="image-popup gallery-popup">
+                                    <i class="tf-ion-ios-search"></i>
+                                </a>
+                            </div>
+
+                            <img class="img-fluid" src="images/kelsie.jpg" width="290" height="400" alt="">
+                        </div>
+
+                        <div class="block">
+                            <div class="gallery-overlay">
+                                <a href="images/Jen.jfif" class="image-popup gallery-popup">
+                                    <i class="tf-ion-ios-search"></i>
+                                </a>
+                            </div>
+
+                            <img class="img-fluid" src="images/Jen.jfif" width="290" height="400" alt="">
+                        </div>
+
+                        <div class="block">
+                            <div class="gallery-overlay">
+                                <a href= "images/muh.jpg" class="image-popup gallery-popup">
+                                    <i class="tf-ion-ios-search"></i>
+                                </a>
+                            </div>
+
+                            <img class="img-fluid" src="images/muh.jpg" alt="" width="250" height="90">
+                        </div>
+
+                        <div class="block">
+                            <div class="gallery-overlay">
+                                <a href="https://gogoldenknights.com/images/2019/11/13/Sean_Crowley_IMG_2408.jpg?width=290" class="image-popup gallery-popup">
+                                    <i class="tf-ion-ios-search"></i>
+                                </a>
+                            </div>
+
+                            <img class="img-fluid" src="https://gogoldenknights.com/images/2019/11/13/Sean_Crowley_IMG_2408.jpg?width=290" alt="">
+                        </div>
+
+                        <div class="block">
+                            <div class="gallery-overlay">
+                                <a href="images/showcase-2.png" class="image-popup gallery-popup">
+                                    <i class="tf-ion-ios-search"></i>
+                                </a>
+                            </div>
+
+                            <img class="img-fluid" src="https://gogoldenknights.com/images/2019/11/13/Sean_Crowley_IMG_2408.jpg?width=290" alt="">
+                        </div>
+                        <div class="block">
+                            <div class="gallery-overlay">
+                                <a href="images/showcase-2.png" class="image-popup gallery-popup">
+                                    <i class="tf-ion-ios-search"></i>
+                                </a>
+                            </div>
+
+                            <img class="img-fluid" src="https://gogoldenknights.com/images/2019/11/13/Sean_Crowley_IMG_2408.jpg?width=290" alt="">
+                        </div>
+
+                        <div class="block">
+                            <div class="gallery-overlay">
+                                <a href="images/caylee.jpg" class="image-popup gallery-popup">
+                                    <i class="tf-ion-ios-search"></i>
+                                </a>
+                            </div>
+
+                            <img class="img-fluid"  src="images/caylee.jpg" width=290" alt="">
+                        </div>
+
+
+
+                        <div class="block">
+                            <div class="gallery-overlay">
+                                <a href="https://gogoldenknights.com/images/2019/11/13/Tyrell_Irvis_IMG_2381.jpg?" class="image-popup gallery-popup">
+                                    <i class="tf-ion-ios-search"></i>
+                                </a>
+                            </div>
+
+                            <img class="img-fluid" src="https://gogoldenknights.com/images/2019/11/13/Tyrell_Irvis_IMG_2381.jpg?width=290" alt="">
+                        </div>
+
+                        <div class="block">
+                            <div class="gallery-overlay">
+                                <a href="images/joe.jpg" class="image-popup gallery-popup">
+                                    <i class="tf-ion-ios-search"></i>
+                                </a>
+                            </div>
+
+                            <img class="img-fluid" src="images/joe.jpg" width=210" alt="">
+                        </div>
+
+                        <div class="block">
+                            <div class="gallery-overlay">
+                                <a href="images/lauren.jfif" class="image-popup gallery-popup">
+                                    <i class="tf-ion-ios-search"></i>
+                                </a>
+                            </div>
+
+                            <img class="img-fluid" <img class="img-fluid"  src="images/lauren.jfif" width="290" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Create an account form, this should bring you to the actual web app after the form is submitted -->
+   <a id="section-2"></a>
+<br>
+<br>
+<br>
+<br><br><br><br>
+   <!--login acount -->
+  <div id='login-form'class='login-page'>
+            <div class="form-box">
+                <div class='button-box'>
+                    <div id='btn'></div>
+                    <button type='button'onclick='login()'class='toggle-btn'>Log In</button>
+                    <button type='button'onclick='register()'class='toggle-btn'>Register</button>
+                </div>
+                <form id='login' class='input-group-login'>
+                    <input type='text'class='input-field'placeholder='Email Id' required >
+		    <input type='password'class='input-field'placeholder='Enter Password' required>
+		    <input type='checkbox'class='check-box'><span>Remember Password</span>
+		    <button type='submit'class='submit-btn'>Log in</button>
+		 </form>
+		 <form id='register' class='input-group-register'>
+		     <input type='text'class='input-field'placeholder='First Name' required>
+		     <input type='text'class='input-field'placeholder='Last Name ' required>
+		     <input type='email'class='input-field'placeholder='Email Id' required>
+		     <input type='password'class='input-field'placeholder='Enter Password' required>
+		     <input type='password'class='input-field'placeholder='Confirm Password'  required>
+		     <input type='checkbox'class='check-box'><span>I agree to the terms and                                                   conditions</span>
+                    <button type='submit'class='submit-btn'>Register</button>
+	         </form>
+            </div>
+        </div>
+
+    <!-- Your team info here -->
+    <section id="contact" class="testimonials section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="heading">
+                        <h2>Testimonials</h2>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0 text-center">
+                    <div class="testimonial-block">
+                        <i class="tf-ion-quote"></i>
+                        <p>
+                            I play collegiate soccer, I took a year off my sophomore year because of covid. It was really hard to get back into play shape. My coach ran us so much, that one practice my legs were too tired to support my knee. So with just a simple lunge my acl went. My surgery failed and I ended up getting a second acl surgery. I now know to protect my body by not over exercising. This app has helped me so much know what my body needs.
+                        </p>
+                        <div class="author-details">
+                            <img src="images/kelsie.jpg" alt="">
+                            <h4>Kelsie Schwager</h4>
+                          <img class="img-fluid" src="" >
+                            <span>Collegiate Soccer Player</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0 text-center">
+                    <div class="testimonial-block">
+                        <i class="tf-ion-quote"></i>
+                        <p>
+                                I play collegiate soccer at the College of Saint Rose.  In high school, I tore my ACL twice which was a very detremental injury and I felt set back because the recovery time was very long.  With SIP, I can focus on my injury prevention so that on the field I feel ready to go and am not putting my body in compromised situations because I did my part by stretching, hydrating, and doing injury prevention exercises.
+                        </p>
+                        <div class="author-details">
+                            <img src="images/Jen.jfif" alt="">
+                            <h4>Jen Bartlett</h4>
+                            <span>Collegiate Soccer Player</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0 text-center">
+                    <div class="testimonial-block">
+                        <i class="tf-ion-quote"></i>
+                        <p>
+                                It is my third year playing baseball at the College of Saint Rose. After tearing my acl during my freshman year I was worried that I may never play again. That is when I joined SIP to start my path to a full recovery.
+                        </p>
+                        <div class="author-details">
+                            <img src="https://gogoldenknights.com/images/2019/11/13/Tyrell_Irvis_IMG_2381.jpg?width=80" alt="">
+                            <h4>Tyrell Irvis</h4>
+                            <span>Collegiate Baseball Player</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0 text-center">
+                    <div class="testimonial-block">
+                        <i class="tf-ion-quote"></i>
+                        <p>
+                                When I was 11 years old I had open heart surgery. I still love to be active and play soccer with my friends recreationally. Because of this app I have been able to do everything that I want to, because it helps me manage my recovery.
+                        </p>
+                        <div class="author-details">
+                            <img src="images/muh.jpg" alt="">
+                            <h4>Mohamad Almoussa</h4>
+                            <span> Soccer Player </span>
+                        </div>
+                    </div>
+                </div>
+            <div class="row mt-100">
+                <div class="col-md-12 text-center">
+                    <a href="" class="btn btn-main">Back to Top</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Importing Scripts -->
+    <script src="plugins/jquery-2.1.1.min.js"></script>
+    <script src="plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script src="plugins/magnific-popup/jquery.magnific.popup.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+    <!-- This script code is for the login and reigster account -->
+    <script>
+        var x=document.getElementById('login');
+		var y=document.getElementById('register');
+		var z=document.getElementById('btn');
+		function register()
+		{
+			x.style.left='-400px';
+			y.style.left='50px';
+			z.style.left='110px';
+		}
+		function login()
+		{
+			x.style.left='50px';
+			y.style.left='450px';
+			z.style.left='0px';
+		}
+	</script>
+	<script>
+        var modal = document.getElementById('login-form');
+        window.onclick = function(event)
+        {
+            if (event.target == modal)
+            {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
 {% endblock %}

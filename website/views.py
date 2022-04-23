@@ -7,10 +7,15 @@ views = Blueprint("views", __name__)
 
 @views.route("/")
 @views.route("/home")
-@login_required
+
 def home():
+    return render_template("home.html", user=current_user)
+
+@views.route("/view_posts")
+@login_required
+def view_posts():
     posts = Post.query.all()
-    return render_template("home.html", user=current_user, posts=posts)
+    return render_template("view_posts.html", user=current_user, posts=posts)
 
 @views.route("/create-post", methods=['GET', 'POST'])
 @login_required
@@ -38,5 +43,5 @@ def create_post():
             db.session.add(post)
             db.session.commit()
             flash('The data is submitted', category='success')
-            return redirect(url_for('views.home'))
+            return redirect(url_for('views.view_posts'))
     return render_template('create_post.html', user=current_user)
