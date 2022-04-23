@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %}
 {% block content%}
 
-<!DOCTYPE html>
+
 <html class="no-js">
 <head>
     <meta charset="utf-8">
@@ -17,10 +17,11 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
 
     <!-- Importing CSSs -->
-    <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="plugins/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="plugins/magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/owl-carousel/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/magnific-popup/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <script src="{{url_for('static', filename='main.js')}}"></script>
 
 </head>
 
@@ -39,7 +40,8 @@
             <div class="row">
                 <div class="col-md-6 text-center mb-5 mb-md-0">
                   <!--this is where the sip logo should be inserted -->
-                    <img src="images/logo.svg" alt="Logo" style="max-width: 1000%;">
+
+                    <img src="{{url_for('static', filename='logo.jpg')}}" align="middle">
                 </div>
                 <div class="col-md-6 align-self-center text-center text-md-left">
                     <div class="block">
@@ -71,12 +73,12 @@
                     <div class="mb-40 text-center text-md-left">
                         <i class="d-inlin-block h2 mb-10 tf-ion-ios-bell-outline"></i>
                         <h4 class="font-weight-bold mb-2">Modern</h4>
-                        <p>We gurantee the most up to date injury recovery prevention available.</p>
+                        <p>We guarantee the most up to date injury recovery prevention available.</p>
                     </div>
                     <div class="mb-40 text-center text-md-left">
                         <i class="d-inlin-block h2 mb-10 tf-ion-ios-cart-outline"></i>
                         <h4 class="font-weight-bold mb-2">Flexible</h4>
-                        <p>When it comes to injury prvention everyone is different, that is why all members get their own unique program.</p>
+                        <p>When it comes to injury prevention everyone is different, that is why all members get their own unique program.</p>
                     </div>
                 </div>
                 <div class="col-md-4 text-center align-self-center mb-4 mb-md-0">
@@ -266,7 +268,7 @@
                                 </a>
                             </div>
 
-                            <img class="img-fluid" <img class="img-fluid"  src="images/lauren.jfif" width="290" alt="">
+                            <img class="img-fluid"  src="images/lauren.jfif" width="290" alt="">
                         </div>
 
                     </div>
@@ -276,37 +278,6 @@
     </section>
 
 
-    <!-- Create an account form, this should bring you to the actual web app after the form is submitted -->
-   <a id="section-2"></a>
-<br>
-<br>
-<br>
-<br><br><br><br>
-   <!--login acount -->
-  <div id='login-form'class='login-page'>
-            <div class="form-box">
-                <div class='button-box'>
-                    <div id='btn'></div>
-                    <button type='button'onclick='login()'class='toggle-btn'>Log In</button>
-                    <button type='button'onclick='register()'class='toggle-btn'>Register</button>
-                </div>
-                <form id='login' class='input-group-login'>
-                    <input type='text'class='input-field'placeholder='Email Id' required >
-		    <input type='password'class='input-field'placeholder='Enter Password' required>
-		    <input type='checkbox'class='check-box'><span>Remember Password</span>
-		    <button type='submit'class='submit-btn'>Log in</button>
-		 </form>
-		 <form id='register' class='input-group-register'>
-		     <input type='text'class='input-field'placeholder='First Name' required>
-		     <input type='text'class='input-field'placeholder='Last Name ' required>
-		     <input type='email'class='input-field'placeholder='Email Id' required>
-		     <input type='password'class='input-field'placeholder='Enter Password' required>
-		     <input type='password'class='input-field'placeholder='Confirm Password'  required>
-		     <input type='checkbox'class='check-box'><span>I agree to the terms and                                                   conditions</span>
-                    <button type='submit'class='submit-btn'>Register</button>
-	         </form>
-            </div>
-        </div>
 
     <!-- Your team info here -->
     <section id="contact" class="testimonials section">
