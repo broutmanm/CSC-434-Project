@@ -648,5 +648,74 @@ footer p.copyright-text a:hover {
 	font-size: 15;
 }
 
+#contact {
+   background-image: url("https://miro.medium.com/max/600/1*jbFK4ynYMjf6-q-annNiGw@2x.jpeg");
+   background-repeat: no-repeat;
+   background-position: center;
+   height: 100vh;
+   background-size: cover;
+   grid-column: 1 / 9;
+   grid-row: 3 / 4;
+   margin-right: 40px;
+   margin-left: 40px;
+}
+
+form {
+  display: grid;
+  grid-row: 2 / auto;
+  grid-template-columns: auto;
+  grid-gap: 0.75rem;
+  width: 100%;
+
+}
+
+#form-box {
+    background-color: #F4F1EF;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 100%;
+    height: 80vh;
+}
+
+input, textarea {
+  font-size: 1rem;
+  padding: 10px;
+  color: white;
+  background-color: #E9E6E5;;
+  border: none;
+}
+
+input, textarea:focus {
+  outline: none;
+  background-color: #E9E6E5;
+}
+
+label {
+  padding: 10px;
+  text-align: right;
+}
+
+input[type="submit"] {
+  width: 10rem;
+  grid-column: 2 / 3;
+}
+
+input[type="submit"]:hover {
+  background-color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+
+.map {
+  background-color: #f9a743;
+  height: auto;
+  margin-top: 60px;
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
 
 /*# sourceMappingURL=maps/style.css.map */

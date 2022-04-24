@@ -11,13 +11,20 @@ views = Blueprint("views", __name__)
 def home():
     return render_template("home.html", user=current_user)
 
-@views.route("/view_posts")
+@views.route("/questions")
+
+def questions():
+    return render_template("questions.html", user=current_user)
+
+@views.route("/view_posts", methods = ["GET"])
 @login_required
 def view_posts():
     posts = Post.query.all()
     return render_template("view_posts.html", user=current_user, posts=posts)
 
+# get post is how we input data into the back end
 @views.route("/create-post", methods=['GET', 'POST'])
+
 @login_required
 def create_post():
     if request.method == "POST":

@@ -21,17 +21,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='plugins/owl-carousel/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='plugins/magnific-popup/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
-    <script src="{{url_for('static', filename='main.js')}}"></script>
+
 
 </head>
 
 <body id="body">
-
-
-
-
-  <!-- Main body -->
-
 
     <!-- Main body -->
 
@@ -263,7 +257,6 @@
 
                         <div class="block">
                             <div class="gallery-overlay">
-                                <a href="images/lauren.jfif" class="image-popup gallery-popup">
                                     <i class="tf-ion-ios-search"></i>
                                 </a>
                             </div>
@@ -280,7 +273,7 @@
 
 
     <!-- Your team info here -->
-    <section id="contact" class="testimonials section">
+    <section id="con" class="testimonials section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12">
@@ -353,41 +346,11 @@
 
 
     <!-- Importing Scripts -->
-    <script src="plugins/jquery-2.1.1.min.js"></script>
-    <script src="plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
-    <script src="plugins/magnific-popup/jquery.magnific.popup.min.js"></script>
-    <script src="js/main.js"></script>
-
-
-    <!-- This script code is for the login and reigster account -->
-    <script>
-        var x=document.getElementById('login');
-		var y=document.getElementById('register');
-		var z=document.getElementById('btn');
-		function register()
-		{
-			x.style.left='-400px';
-			y.style.left='50px';
-			z.style.left='110px';
-		}
-		function login()
-		{
-			x.style.left='50px';
-			y.style.left='450px';
-			z.style.left='0px';
-		}
-	</script>
-	<script>
-        var modal = document.getElementById('login-form');
-        window.onclick = function(event)
-        {
-            if (event.target == modal)
-            {
-                modal.style.display = "none";
-            }
-        }
-    </script>
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+    <script src="{{url_for('static',filename = 'jquery-2.1.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'owl.carousel.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'jquery.magnific.popup.min.js')}}"></script>
 
 </body>
 

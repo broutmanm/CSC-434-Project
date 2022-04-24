@@ -1,0 +1,89 @@
+{% extends "base.html" %} {% block title %}Questions{% endblock %}
+{% block content%}
+
+
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SIP</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Importing fonts -->
+    <!-- Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400i|Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
+
+    <!-- Importing CSSs -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/owl-carousel/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/magnific-popup/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+
+</head>
+
+<body id="body">
+
+    <div id="contact">
+      <div class="slogan">
+        <h1>Contact</h1></div>
+      </div>
+
+    <div id="more-info">
+      <div id="text">
+         <h2>Frequently Asked Questions</h2>
+
+            <dl>
+              <dt>Why do we ask about mental health?</dt>
+              <dd>- Mental health is an indicator of over exercise, and can be deteramental to and athletes performance.  We belive that mental health come before anything else</dd>
+              <dt>How often should I use the website?</dt>
+              <dd>- We prefer filling out the form daily, but using it every time you exercise works too</dd>
+                <dt>How does this prevent injury?</dt>
+              <dd>- Over exercising is one of the leading causes of injury, we believe that if you take the appropriate time to rest that you will be able to compete at your highest capability and prevent injury </dd>
+            </dl>
+
+      </div>
+    </div>
+
+    <div id="more-info">
+      <div id="text">
+          <h2>How to Use the Website</h2>
+        <dl>
+              <dt>Sign Up</dt>
+              <dd>- In the top left hand corner is our sign up button, all you need to do is input and email, password, and a username</dd>
+              <dt>Log In</dt>
+              <dd>- In the top left hand corner use our log in button to log in </dd>
+                <dt>Fill out our form</dt>
+              <dd>- Click on fill out form button and answer the questions numerically </dd>
+            <dt>View the form</dt>
+              <dd>- Click on our view forms button and see all of your forms you created </dd>
+            <dt>Continue Working on Yourself!</dt>
+              <dd>- Use this as a motivator to continue working out and to prevent injury! </dd>
+            </dl>
+      </div>
+    </div>
+
+    <div id="form-box">
+      <h3>Contact Us</h3>
+      <form action="mailto:kelsieschwager@gmail.com, jen10bart@gmail.com" method="post" enctype="text/plain">
+        * First Name: <input type="First Name" name="myFName" id="name" required><br>
+        * Last Name: <input type="Last Name" name="myLName" id="name" required><br>
+        * Email: <input type="email" name="myEmail" id="email" required><br>
+        Phone: <input type="tel" name="myPhone" id="phone"><br>
+        * Message: <textarea name="myComments" rows="2" cols="20" required></textarea><br>
+
+        <input type="submit" name="mySubmit">
+
+      </form>
+        </div>
+      <div class="map">
+      <div class="map-words"><h3>Find Us</h3></div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2933.860684192558!2d-73.78886338514599!3d42.664307579167584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89de0a517693ea11%3A0x3d19f1e11deefd6!2sThe%20College%20of%20Saint%20Rose!5e0!3m2!1sen!2sus!4v1650816950302!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</body>
+
+</html>
+{% endblock %}
