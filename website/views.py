@@ -21,6 +21,18 @@ def questions():
 def level1():
     return render_template("level1.html", user=current_user)
 
+@views.route("/level2")
+
+def level2():
+    return render_template("level2.html", user=current_user)
+
+@views.route("/level3")
+
+def level3():
+    return render_template("level3.html", user=current_user)
+
+
+
 @views.route("/view_posts", methods = ["GET"])
 @login_required
 def view_posts():

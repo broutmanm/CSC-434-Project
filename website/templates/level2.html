@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block title %}Level 2{% endblock %}
+{% block content%}
+
+
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SIP</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Importing fonts -->
+    <!-- Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400i|Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
+
+    <!-- Importing CSSs -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/owl-carousel/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/magnific-popup/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+
+
+</head>
+
+<body id="body">
+    <div id="workout">
+    <h1>Level 2 - Medium Intensity</h1>
+    <h3>We reccommened a light job and lighter intensity workouts when having a higher intensity work week</h3>
+    <p>Scheduling the occasional lighter run can give your body a much-needed break, and improve things for your next challenging session. This way, recovery runs can help prevent the risk of developing a training injury such as Runner's Knee or Plantar Fasciitis.(Marathon and Book)</p>
+        </div>
+    <div id="videos">
+        <iframe width="1120" height="630" src="https://www.youtube.com/embed/25anI0tacE0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="1120" height="630" src="https://www.youtube.com/embed/wNfSvQK11Y4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</body>
+
+</html>
+{% endblock %}
