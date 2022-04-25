@@ -16,6 +16,11 @@ def home():
 def questions():
     return render_template("questions.html", user=current_user)
 
+@views.route("/level1")
+
+def level1():
+    return render_template("level1.html", user=current_user)
+
 @views.route("/view_posts", methods = ["GET"])
 @login_required
 def view_posts():
