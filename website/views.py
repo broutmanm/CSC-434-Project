@@ -65,8 +65,10 @@ def create_post():
             if intensity<2:
                 text1 = "Way to get an intense workout in!"
                 #intensity = text1
-            elif intensity >= 2:
+            elif intensity >= 2 and intensity <=3:
                 text1 = "Good job getting a workout in today!"
+            elif intensity >= 4:
+                text1 = "Way to get some rest today"
         sore = ""
         if (text2.isnumeric()):
             sore = int(text2)
@@ -119,6 +121,10 @@ def create_post():
                 flash('Please enter a numeric value for how sore you are: 1-10', category='error')
             if not (hours == text3):
                 flash('Please enter a numeric value for how many hours you worked out for', category='error')
+            if not (sleep == text4):
+                flash('Please enter a numeric value for how many hours of sleep you got', category='error')
+            if not (mental == text5):
+                flash('Please enter a numeric value for how you are feeling mentally', category='error')
 
         else:
             post = Post(text=text,text1=text1,text2=text2,text3=text3,text4=text4,text5=text5,author=current_user.id)
