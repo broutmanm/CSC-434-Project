@@ -6,16 +6,24 @@ from . import db
 
 views = Blueprint("views", __name__)
 
+# These are our URls
+
 @views.route("/")
+
+# Home URL
 @views.route("/home")
 
 def home():
     return render_template("home.html", user=current_user)
 
+# Questions Page URL
+
 @views.route("/questions")
 #questions
 def questions():
     return render_template("questions.html", user=current_user)
+
+# Workout Pages URLs
 
 @views.route("/level1")
 
@@ -32,7 +40,7 @@ def level2():
 def level3():
     return render_template("level3.html", user=current_user)
 
-
+# View Posts URL
 
 @views.route("/view_posts", methods = ["GET"])
 @login_required
@@ -43,8 +51,12 @@ def view_posts():
 # get post is how we input data into the back end
 @views.route("/create-post", methods=['GET', 'POST'])
 
+# Create Post URL
+
 @login_required
 def create_post():
+
+    # Creates variables for each input by the user
     if request.method == "POST":
         text = request.form.get('text')
         text1 = request.form.get('text1')
@@ -52,6 +64,8 @@ def create_post():
         text3 = request.form.get('text3')
         text4 = request.form.get('text4')
         text5  = request.form.get('text5')
+
+        # The Output conditional statements
         water=""
         if (text.isnumeric()):
             water = int(text)
@@ -112,6 +126,8 @@ def create_post():
                 text5 = "You should check out this page: https://uhs.umich.edu/tenthings"
             elif mental <= 7:
                 text5 = "Continue working on yourself!"
+
+        #these are flash statements if they do not enter anything or a wrong type
 
         if not (text and text1 and text2 and text3 and text4 and text5):
             flash('Enter the details', category='error')
