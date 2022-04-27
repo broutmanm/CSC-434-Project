@@ -115,7 +115,7 @@ def create_post():
 
         if not (text and text1 and text2 and text3 and text4 and text5):
             flash('Enter the details', category='error')
-
+        # made changes
         elif not (water == text):
             flash('Please enter a numeric value in cups', category='error')
         elif not (intensity == text1):
