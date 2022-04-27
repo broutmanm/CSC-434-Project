@@ -115,16 +115,16 @@ def create_post():
 
         elif not (water == text):
             flash('Please enter a numeric value in cups', category='error')
-            if not (intensity == text1):
-                flash('Please enter a numeric value for your intensity: 1, 2, or 3', category='error')
-            if not (sore == text2):
-                flash('Please enter a numeric value for how sore you are: 1-10', category='error')
-            if not (hours == text3):
-                flash('Please enter a numeric value for how many hours you worked out for', category='error')
-            if not (sleep == text4):
-                flash('Please enter a numeric value for how many hours of sleep you got', category='error')
-            if not (mental == text5):
-                flash('Please enter a numeric value for how you are feeling mentally', category='error')
+        elif not (intensity == text1):
+            flash('Please enter a numeric value for your intensity: 1, 2, or 3', category='error')
+        elif not (sore == text2):
+            flash('Please enter a numeric value for how sore you are: 1-10', category='error')
+        elif not (hours == text3):
+            flash('Please enter a numeric value for how many hours you worked out for', category='error')
+        elif not (sleep == text4):
+            flash('Please enter a numeric value for how many hours of sleep you got', category='error')
+        elif not (mental == text5):
+            flash('Please enter a numeric value for how you are feeling mentally', category='error')
 
         else:
             post = Post(text=text,text1=text1,text2=text2,text3=text3,text4=text4,text5=text5,author=current_user.id)
