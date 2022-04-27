@@ -12,7 +12,7 @@ def home():
     return render_template("home.html", user=current_user)
 
 @views.route("/questions")
-
+#questions
 def questions():
     return render_template("questions.html", user=current_user)
 
