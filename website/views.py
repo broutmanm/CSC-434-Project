@@ -1,4 +1,3 @@
-#views.py is the code for viewing the different pages and links to the login page
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Post, User
@@ -6,10 +5,10 @@ from . import db
 # import os
 
 views = Blueprint("views", __name__)
-#routes for different pages
+
 @views.route("/")
 @views.route("/home")
-#home page
+
 def home():
     return render_template("home.html", user=current_user)
 
@@ -17,24 +16,24 @@ def home():
 #questions
 def questions():
     return render_template("questions.html", user=current_user)
-#level1 workouts page
+
 @views.route("/level1")
 
 def level1():
     return render_template("level1.html", user=current_user)
-#level2 workouts page
+
 @views.route("/level2")
 
 def level2():
     return render_template("level2.html", user=current_user)
-#level3 workouts page
+
 @views.route("/level3")
 
 def level3():
     return render_template("level3.html", user=current_user)
 
 
-#requires login in order to view posts made, when logged in you can view all of your posts
+
 @views.route("/view_posts", methods = ["GET"])
 @login_required
 def view_posts():
@@ -43,18 +42,16 @@ def view_posts():
 
 # get post is how we input data into the back end
 @views.route("/create-post", methods=['GET', 'POST'])
-#takes the input the user inputted from the form, only when logged in
+
 @login_required
 def create_post():
     if request.method == "POST":
-        #gets user inputs and stores in variable
         text = request.form.get('text')
         text1 = request.form.get('text1')
         text2 = request.form.get('text2')
         text3 = request.form.get('text3')
         text4 = request.form.get('text4')
         text5  = request.form.get('text5')
-        #get user input for amount of water that was drank and outputs whether user should drink more or less water based on input
         water=""
         if (text.isnumeric()):
             water = int(text)
@@ -63,7 +60,6 @@ def create_post():
                 water=text
             elif water >= 15:
                 text = "You drank enough water today, good job!"
-        #get user input for intensity of workout and outputs based on how intense it was
         intensity=""
         if (text1.isnumeric()):
             intensity = int(text1)
@@ -75,7 +71,6 @@ def create_post():
                 text1 = "Good job getting a workout in today!"
             elif intensity >= 4:
                 text1 = "Way to get some rest today"
-        #takes user input for soreness and returns a statement based on that
         sore = ""
         if (text2.isnumeric()):
             sore = int(text2)
@@ -84,7 +79,7 @@ def create_post():
                 #sore = text2
             elif sore >= 7:
                 text2 = "Your body seems pretty sore!"
-        #get input for how long user worked out for and returns if they should rest or work on based on hours, intensity, and soreness
+
         hours = ""
         if (text3.isnumeric()):
             hours = int(text3)
@@ -102,7 +97,7 @@ def create_post():
                     text3 = "You are good to get a good workout in!"
                 if (int(intensity)>2 and int(sore)>7):
                     text3 = "You are good to get a light workout in since you're pretty sore!"
-        #takes input for how much sleep user got and returns statement based on tbat
+
         sleep = ""
         if (text4.isnumeric()):
             sleep = int(text4)
@@ -110,7 +105,6 @@ def create_post():
                 text4 = "You got a good amount of sleep last night."
             elif sleep < 8:
                 text4 = "You should get some more sleep so your body isn't as tired."
-        #checks how user is mentally and tells them to continue working on themself or gives a page they should check out if struggling mentally
         mental = ""
         if (text5.isnumeric()):
             mental = int(text5)
