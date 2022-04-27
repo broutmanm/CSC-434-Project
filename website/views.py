@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Post, User
 from . import db
+# import os
 
 views = Blueprint("views", __name__)
 
@@ -62,9 +63,10 @@ def create_post():
         intensity=""
         if (text1.isnumeric()):
             intensity = int(text1)
-            if intensity<2:
-                text1 = "Way to get an intense workout in!"
-                #intensity = text1
+            if intensity == 4:
+                text1 = "It's time to do some workout!"
+            elif 2 < intensity < 4:
+                text1 = "Way to get an intense workout!"
             elif intensity >= 2 and intensity <=3:
                 text1 = "Good job getting a workout in today!"
             elif intensity >= 4:
@@ -95,6 +97,7 @@ def create_post():
                     text3 = "You are good to get a good workout in!"
                 if (int(intensity)>2 and int(sore)>7):
                     text3 = "You are good to get a light workout in since you're pretty sore!"
+
         sleep = ""
         if (text4.isnumeric()):
             sleep = int(text4)
@@ -105,14 +108,14 @@ def create_post():
         mental = ""
         if (text5.isnumeric()):
             mental = int(text5)
-            if mental>7:
+            if mental > 7:
                 text5 = "You should check out this page: https://uhs.umich.edu/tenthings"
-            elif mental<=7:
+            elif mental <= 7:
                 text5 = "Continue working on yourself!"
 
         if not (text and text1 and text2 and text3 and text4 and text5):
             flash('Enter the details', category='error')
-
+        # made changes here
         elif not (water == text):
             flash('Please enter a numeric value in cups', category='error')
         elif not (intensity == text1):
@@ -132,6 +135,7 @@ def create_post():
             db.session.commit()
             flash('The data is submitted', category='success')
             return redirect(url_for('views.view_posts'))
+
     return render_template('create_post.html', user=current_user)
 @views.route("/delete-post/<id>")
 @login_required
