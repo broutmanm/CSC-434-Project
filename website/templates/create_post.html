@@ -1,7 +1,7 @@
 
 {% extends "base.html" %} {% block title %}Home{% endblock %}
 {% block content%}
-
+<!-- Created a form which takes the input from the user -->
 <style>
   body {
   background: #f9a743;
@@ -12,34 +12,36 @@
 </style>
 <h1 align="center"> Fill out the form </h1>
 <form method='POST'>
-    <!--- changes---!>
+    <!--- Question 1:The hydration level  -->
     <h4 align="center"> How many cups of water did you drink today? Answer in numeric </h4>
     <textarea name ="text" id ="text" class ="form-control"></textarea>
     <br />
-
+    <!--- Question 2:The intensity level-->
     <h4 align="center"> what's the intensity of your workout?
       (high intensity:1, moderate :2, low:3, none:4) Answer in numeric </h4>
     <textarea name ="text1" id ="text1" class ="form-control"></textarea>
     <br />
-
+    <!--- Question 3:The soreness level -->
     <h4 align="center"> On a scale of 1-10, how sore are you today(1-not sore, 10-very sore)? Answer in numeric </h4>
     <textarea name ="text2" id ="text2" class ="form-control"></textarea>
     <br />
-
+    <!--- Question 4:The workout hours  -->
     <h4 align="center"> How many hours did you workout today? Answer in numeric </h4>
     <textarea name ="text3" id ="text3" class ="form-control"></textarea>
     <br />
-
+    <!--- Question 5:sleep time -->
     <h4 align="center"> How many hours of sleep did you get today? Answer in numeric </h4>
     <textarea name ="text4" id ="text4" class ="form-control"></textarea>
     <br />
-
-    <h4 align="center"> On a scale of 1-10, how's your mental health(1-great, 10-mentally not good) ? answer in numeric </h4>
+    <!--- Question 6:mental health -->
+    <h4 align="center"> On a scale of 1-10, how's your mental health(1-great, 10-mentally not good) ? Answer in numeric </h4>
     <textarea name ="text5" id ="text5" class ="form-control"></textarea>
+    <!--- Submit Button -->
     <div align = "center">
       <button type = "submit" class="btn btn-lg btn-primary">SUBMIT</button>
     </div>
     <br />
+    <!--- back button -->
     <div align = "center">
         <a href="/view_posts"><button type = "button" class="btn btn-lg btn-secondary">Back</button></a>
     </div>
