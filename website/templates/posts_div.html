@@ -3,10 +3,11 @@
 <h1 align="center">{% block header %}Posts{% endblock %}</h1>
 <div id="posts">
     {% for post in posts %}
+    {% if user.id == post.author %}
     <div class="card border-dark">
         <div class="card-header d-flex justify-content-between align-items-center">
             <a href="/posts/{{post.user.username}}">{{post.user.username}}</a>
-            {% if user.id == post.author %}
+             <!-- {% if user.id == post.author %} -->
             <div class=""btn-group>
                 <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown">
                 </button>
@@ -14,7 +15,7 @@
                     <li><a href="/delete-post/{{post.id}}" class="dropdown=item">Delete</a></li>
                 </ul>
             </div>
-            {% endif %}
+            <!--{% endif %} -->
         </div>
         <div class="card-body">
             <div class="card-text">{{post.text}}</div>
@@ -27,7 +28,7 @@
         <div class="card-footer text-muted">
             {{post.date_created}}
         </div>
-
+    {% endif %}
     {% endfor %}
     </div>
 
