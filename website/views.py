@@ -2,7 +2,6 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Post, User
 from . import db
-# import os
 
 views = Blueprint("views", __name__)
 
@@ -13,7 +12,7 @@ def home():
     return render_template("home.html", user=current_user)
 
 @views.route("/questions")
-#questions
+
 def questions():
     return render_template("questions.html", user=current_user)
 
@@ -34,7 +33,7 @@ def level3():
 
 
 
-@views.route("/view_posts", methods = ["GET"])
+@views.route("/view_posts/", methods = ["GET"])
 @login_required
 def view_posts():
     posts = Post.query.all()
@@ -60,33 +59,39 @@ def create_post():
                 water=text
             elif water >= 15:
                 text = "You drank enough water today, good job!"
-        intensity=""
+                water = text
+        intensity=0
+        report1 = ""
         if (text1.isnumeric()):
             intensity = int(text1)
-            if intensity == 4:
-                text1 = "It's time to do some workout!"
-            elif 2 < intensity < 4:
-                text1 = "Way to get an intense workout!"
-            elif intensity >= 2 and intensity <=3:
+            if intensity<2:
+                text1 = "Way to get an intense workout in!"
+            elif intensity >= 2 or intensity <=3:
                 text1 = "Good job getting a workout in today!"
             elif intensity >= 4:
                 text1 = "Way to get some rest today"
+            report1 = text1
+
         sore = ""
+        report2 = ""
         if (text2.isnumeric()):
             sore = int(text2)
             if sore < 7:
                 text2 = "It's good you're not that sore today!"
-                #sore = text2
             elif sore >= 7:
                 text2 = "Your body seems pretty sore!"
+            report2 = text2
 
         hours = ""
+        report3 = ""
         if (text3.isnumeric()):
             hours = int(text3)
             if hours > 6:
                 text3 = "You really need to rest today so you don't put your body in a bad place"
                 #hours = text3
-            if not (text and text1 and text2 and text3 and text4 and text5):
+            if not (sore and intensity):
+                flash('Enter the details', category='error')
+            elif not (text and text1 and text2 and text3 and text4 and text5):
                 flash('Enter the details', category='error')
             elif hours<=6:
                 if (int(intensity)>2 and int(sore)<7):
@@ -97,7 +102,7 @@ def create_post():
                     text3 = "You are good to get a good workout in!"
                 if (int(intensity)>2 and int(sore)>7):
                     text3 = "You are good to get a light workout in since you're pretty sore!"
-
+            report3 = text3
         sleep = ""
         if (text4.isnumeric()):
             sleep = int(text4)
@@ -105,24 +110,26 @@ def create_post():
                 text4 = "You got a good amount of sleep last night."
             elif sleep < 8:
                 text4 = "You should get some more sleep so your body isn't as tired."
+            sleep = text4
         mental = ""
         if (text5.isnumeric()):
             mental = int(text5)
-            if mental > 7:
+            if mental>7:
                 text5 = "You should check out this page: https://uhs.umich.edu/tenthings"
-            elif mental <= 7:
+            elif mental<=7:
                 text5 = "Continue working on yourself!"
+            mental = text5
 
         if not (text and text1 and text2 and text3 and text4 and text5):
             flash('Enter the details', category='error')
-        # made changes here
+
         elif not (water == text):
             flash('Please enter a numeric value in cups', category='error')
-        elif not (intensity == text1):
+        elif  (report1 != text1):
             flash('Please enter a numeric value for your intensity: 1, 2, or 3', category='error')
-        elif not (sore == text2):
+        elif not (report2 == text2):
             flash('Please enter a numeric value for how sore you are: 1-10', category='error')
-        elif not (hours == text3):
+        elif not (report3 == text3):
             flash('Please enter a numeric value for how many hours you worked out for', category='error')
         elif not (sleep == text4):
             flash('Please enter a numeric value for how many hours of sleep you got', category='error')
@@ -135,7 +142,6 @@ def create_post():
             db.session.commit()
             flash('The data is submitted', category='success')
             return redirect(url_for('views.view_posts'))
-
     return render_template('create_post.html', user=current_user)
 @views.route("/delete-post/<id>")
 @login_required
