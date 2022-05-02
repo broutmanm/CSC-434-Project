@@ -62,7 +62,7 @@ def create_post():
                 water = text
         intensity=0
         report1 = ""
-        if (text1.isnumeric()):
+        if (text1.isnumeric() and (text1 == "1" or text1 == "2" or text1 == "3" or text1 == "4")):
             intensity = int(text1)
             if intensity<2:
                 text1 = "Way to get an intense workout in!"
@@ -74,7 +74,7 @@ def create_post():
 
         sore = ""
         report2 = ""
-        if (text2.isnumeric()):
+        if (text2.isnumeric() and (1<=int(text2)<=10)):
             sore = int(text2)
             if sore < 7:
                 text2 = "It's good you're not that sore today!"
@@ -84,8 +84,27 @@ def create_post():
 
         hours = ""
         report3 = ""
-        if (text3.isnumeric()):
-            hours = int(text3)
+        if text3.replace(".", "").isdigit():
+            hours = float(text3)
+            if hours > 6:
+                text3 = "You really need to rest today so you don't put your body in a bad place"
+                # hours = text3
+            if not (sore and intensity):
+                flash('Enter the details', category='error')
+            elif not (text and text1 and text2 and text3 and text4 and text5):
+                flash('Enter the details', category='error')
+            elif hours <= 6:
+                if (int(intensity) > 2 and int(sore) < 7):
+                    text3 = "You are good to get a good workout in!"
+                if (int(intensity) <= 2 and int(sore) > 7):
+                    text3 = "You should rest today since you're sore and got a good workout in!"
+                if (int(intensity) <= 2 and int(sore) < 7):
+                    text3 = "You are good to get a good workout in!"
+                if (int(intensity) > 2 and int(sore) > 7):
+                    text3 = "You are good to get a light workout in since you're pretty sore!"
+            report3 = text3
+        elif (text3.isnumeric()):
+            hours = float(text3)
             if hours > 6:
                 text3 = "You really need to rest today so you don't put your body in a bad place"
                 #hours = text3
@@ -93,7 +112,7 @@ def create_post():
                 flash('Enter the details', category='error')
             elif not (text and text1 and text2 and text3 and text4 and text5):
                 flash('Enter the details', category='error')
-            elif hours<=6:
+            elif hours <=6:
                 if (int(intensity)>2 and int(sore)<7):
                     text3 = "You are good to get a good workout in!"
                 if (int(intensity)<=2 and int(sore)>7):
@@ -104,15 +123,22 @@ def create_post():
                     text3 = "You are good to get a light workout in since you're pretty sore!"
             report3 = text3
         sleep = ""
+        if text4.replace(".", "").isdigit():
+            sleep = float(text4)
+            if sleep >= 8:
+                text4 = "You got a good amount of sleep last night."
+            elif sleep < 8:
+                text4 = "You should get some more sleep so your body isn't as tired."
+            sleep = text4
         if (text4.isnumeric()):
-            sleep = int(text4)
+            sleep = float(text4)
             if sleep >= 8:
                 text4 = "You got a good amount of sleep last night."
             elif sleep < 8:
                 text4 = "You should get some more sleep so your body isn't as tired."
             sleep = text4
         mental = ""
-        if (text5.isnumeric()):
+        if (text5.isnumeric() and (1<= int(text5) <= 10)):
             mental = int(text5)
             if mental>7:
                 text5 = "You should check out this page: https://uhs.umich.edu/tenthings"
@@ -126,7 +152,7 @@ def create_post():
         elif not (water == text):
             flash('Please enter a numeric value in cups', category='error')
         elif  (report1 != text1):
-            flash('Please enter a numeric value for your intensity: 1, 2, or 3', category='error')
+            flash('Please enter a numeric value for your intensity: 1, 2, 3, or 4', category='error')
         elif not (report2 == text2):
             flash('Please enter a numeric value for how sore you are: 1-10', category='error')
         elif not (report3 == text3):
