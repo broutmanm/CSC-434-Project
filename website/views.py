@@ -6,10 +6,10 @@ from .models import Post, User
 from . import db
 
 views = Blueprint("views", __name__)
-#links to home page
+#links to the home page
 @views.route("/")
 @views.route("/home")
-#links to home html file/page
+#links to the home html file/page
 def home():
     return render_template("home.html", user=current_user)
 
