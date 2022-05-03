@@ -3,6 +3,7 @@ from . import db
 from .models import User
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+import  re
 
 auth = Blueprint("auth", __name__)
 
@@ -26,6 +27,7 @@ def login():
 
     return render_template("login.html", user=current_user)
 
+regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 
 @auth.route("/sign-up", methods=['GET', 'POST'])
 def sign_up():
@@ -34,11 +36,14 @@ def sign_up():
         username = request.form.get("username")
         password1 = request.form.get("password1")
         password2 = request.form.get("password2")
+        match = re.fullmatch(regex, email)
 
         email_exists = User.query.filter_by(email=email).first()
         username_exists = User.query.filter_by(username=username).first()
         if email_exists:
             flash('Email is already in use.', category='error')
+        elif match is None:
+            flash('Email is invalid, the pattern should be real email address.', category='error')
         elif username_exists:
             flash('Username is already in use.', category='error')
         elif password1 != password2:
