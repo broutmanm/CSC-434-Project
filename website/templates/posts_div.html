@@ -1,3 +1,4 @@
+<!-- html for the users posts and drop down to delete a post -->
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
 <h1 align="center">{% block header %}Posts{% endblock %}</h1>
@@ -18,6 +19,7 @@
             <!--{% endif %} -->
         </div>
         <div class="card-body">
+            <!--shows user output on website from views.py-->
             <div class="card-text">{{post.text}}</div>
             <div class="card-text">{{post.text1}}</div>
             <div class="card-text">{{post.text2}}</div>
@@ -26,12 +28,13 @@
             <div class="card-text">{{post.text5}}</div>
         </div>
         <div class="card-footer text-muted">
+            <!--posts the date the user created a post -->
             {{post.date_created}}
         </div>
     {% endif %}
     {% endfor %}
     </div>
-
+<!--button for user to create a post -->
     {% block footer %}
 <div align="center">
     <a href="/create-post">
