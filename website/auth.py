@@ -49,11 +49,11 @@ def sign_up():
         elif password1 != password2:
             flash('Password don\'t match!', category='error')
         elif len(username) < 2:
-            flash('Username is too short.', category='error')
+            flash('Username is too short. Use at least 2 characters', category='error')
         elif len(password1) < 5:
-            flash('password is too short.', category='error')
+            flash('Password is too short. Use at least 5 characters', category='error')
         elif len(email) < 4:
-            flash('Email is invalid', category='error')
+            flash('Email is invalid. Use at least 4 characters', category='error')
         else:
             new_user = User(email=email, username=username, password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
