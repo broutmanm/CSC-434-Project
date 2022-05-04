@@ -38,17 +38,17 @@ def sign_up():
         email_exists = User.query.filter_by(email=email).first()
         username_exists = User.query.filter_by(username=username).first()
         if email_exists:
-            flash('Email is already in use.', category='error')
+            flash('That email is already in use.', category='error')
         elif username_exists:
             flash('Username is already in use.', category='error')
         elif password1 != password2:
-            flash('Password don\'t match!', category='error')
+            flash('Password doesn\'t match!', category='error')
         elif len(username) < 2:
-            flash('Username is too short.', category='error')
+            flash('That username is too short.', category='error')
         elif len(password1) < 5:
-            flash('password is too short.', category='error')
+            flash('That password is too short, enter a password longer than 5 letters.', category='error')
         elif len(email) < 4:
-            flash('Email is invalid', category='error')
+            flash('That email is invalid, please enter an email longer than 4 letters', category='error')
         else:
             new_user = User(email=email, username=username, password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
